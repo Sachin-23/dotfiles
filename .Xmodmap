@@ -1,0 +1,14 @@
+! Clear Capslock
+clear lock
+! capslock to escape and vice versa
+keycode 66 = Escape
+keycode 9 = Caps_Lock
+add lock = Caps_Lock
+! Clear Numlock
+remove mod2 = Num_Lock
+
+! Clearing the arrow keys and some functional keys like hme
+keycode 111 =
+keycode 113 =
+keycode 114 =
+keycode 116 =

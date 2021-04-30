@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/s4ch1n/ctf/cyber/web_ministryplace/challenge/pages'
+let g:netrw_dirhist_0='/home/s4ch1n/Study/Projects/Algorithms/Uncertainty/heredity'
+let g:netrw_dirhist_9='/home/s4ch1n/Study/Projects/Algorithms/Uncertainty'
+let g:netrw_dirhist_8='/home/s4ch1n/ctf/hackpack/flag.txt'
+let g:netrw_dirhist_7='/home/s4ch1n/zettel'
+let g:netrw_dirhist_6='/home/s4ch1n/test'
+let g:netrw_dirhist_5='/home/s4ch1n/Study/cp/codechef'
+let g:netrw_dirhist_4='/home/s4ch1n/test'
+let g:netrw_dirhist_3='/home/s4ch1n/Study'
+let g:netrw_dirhist_2='/home/s4ch1n'

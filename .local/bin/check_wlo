@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Check ethernet 
+output1=$(nmcli | grep "enp2s0:\ connected")
+output2=$(nmcli | grep -e "^wlo1:\ connected")
+echo "$output1 $output2"
+if [ -n "$output1" ] && [ -n "$output2" ]
+then
+  echo "done"
+  nmcli device disconnect wlo1
+fi

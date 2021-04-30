@@ -1,0 +1,31 @@
+Config { font = "xft:Source Code pro:bold:size=9.5:antialias=true"
+       , additionalFonts = [ "xft:Mononoki Nerd Font:pixelsize=13:antialias:true:hinting=true" ]
+       , bgColor = "#121212" 
+       , fgColor = "#E5E9F0" 
+       , position = TopW L 95
+       , border = NoBorder 
+        -- general behavior    
+       , lowerOnStart =     True    --send to bottom of window stack on start    
+       , hideOnStart =      False   -- start with window unmapped (hidden)    
+       , allDesktops =      False    -- show on all desktops    
+       , overrideRedirect = True    -- set the Override Redirect flag (Xlib)    
+       , pickBroadest =     False   -- choose widest display (multi-monitor)    
+       , persistent =       True    -- enable/disable hiding (True = disabled)  
+
+       , commands = [ Run Battery [ "-t", "<acstatus>"
+                                  , "-L", "25", "-H", "80"
+                                  , "-l", "#e33045", "-h", "#a3be8c", "-n", "#d08770"
+                                  , "--", "-o", "<left>% (<timeleft>)"
+                                  , "-O", "<fc=#ebcb8b>Charging</fc>"
+                                  , "-i", "<fc=#92cc62>Charged</fc>"
+                                  ] 50
+                    , Run DynNetwork [ "-t", "<dev>: <tx>kB/s|<rx>kB/s"
+                                     , "-L", "1000", "-H", "5000"
+                                     , "-l", "#e33045", "-n", "#e46e4a", "-h", "#92cc62"
+                                     , "--", "--devices", "wlo1,enp2s0"] 10
+                    , Run Date "%d %b %T" "date" 10
+                    , Run StdinReader
+       ]
+       , template = "<fc=#c2c8d2>%StdinReader%</fc> }{ <fc=#c2c8d2>%dynnetwork%</fc> <fc=#B24BF3>||</fc> <fc=#de7959>%date%</fc> <fc=#B24BF3>||</fc> %battery%"
+
+}

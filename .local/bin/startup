@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Check HDMI
+output=$(xrandr --query | grep "HDMI1 connected" | cut -d ' ' -f 1-2)
+if [ -z "$output" ]
+then
+  xrandr --output HDMI1 --off --output eDP1 --auto --primary
+else
+  #xrandr --output eDP1 --auto --output HDMI1 --auto --primary --right-of  eDP1
+  xrandr --output eDP1 --mode 1366x768 --pos 0x312 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 1366x0 --rotate normal --output VIRTUAL1 --off
+fi
+

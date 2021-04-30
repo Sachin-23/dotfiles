@@ -1,0 +1,15 @@
+Config 
+{ font = "xft:SF pro text:size=11"
+, bgColor = "black" 
+, fgColor = "grey" 
+, position = TopW L 95 
+, border = NoBorder 
+, lowerOnStart = True 
+, commands = 
+  [ Run Battery ["-t", "<left>% ", "-L", "25", "-H", "75", "-h", "green", "-n", "yellow", "-l", "red"] 10
+  , Run Date "%a %b %_d %Y %H:%M" "date" 10
+  , Run DynNetwork ["--", "--devices", "wlo0,enp2s0"] 10
+  , Run StdinReader
+  ]
+  ,template = "%StdinReader% }{ %dynnetwork% | %date% | %battery%"
+}

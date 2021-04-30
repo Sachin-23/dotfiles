@@ -1,0 +1,1 @@
+/usr/bin/mysqld_safe --datadir='/home/s4ch1n/.database/mysql'
