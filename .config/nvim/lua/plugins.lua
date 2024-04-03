@@ -17,17 +17,20 @@ require("lazy").setup({
     config = function()
       vim.cmd.colorscheme("base16-tomorrow-night")
     end,
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup()
-      options = {
-        theme = "tomorrow-night",
-      }
-    end
-  },
+ },
+  --{
+  --  'nvim-lualine/lualine.nvim',
+  --  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  --  config = function()
+  --    require('lualine').setup({
+  --      options = {
+  --        theme = "base16",
+  --        section_separators = '', 
+  --        component_separators = ''
+  --      }
+  --    })
+  --  end
+  --},
   {
     "mbbill/undotree",
     config = function()
@@ -50,13 +53,16 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
-      lspconfig.clangd.setup({})
-      lspconfig.pylsp.setup({})
-      lspconfig.tsserver.setup({})
-      lspconfig.hls.setup({})
       -- Don't start unless needed.
+      lspconfig.clangd.setup({autostart = false})
+      lspconfig.pylsp.setup({autostart = false})
+      lspconfig.tsserver.setup({autostart = false})
+      lspconfig.hls.setup({autostart = false})
+      vim.api.nvim_set_keymap("i", "<Leader>c", ":LspStart<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<Leader>c", ":LspStart<CR>", { noremap = true, silent = true })
     end
   },
+
   {
     "williamboman/mason.nvim",
     config = function()

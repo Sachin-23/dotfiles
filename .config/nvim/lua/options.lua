@@ -19,6 +19,9 @@ vim.opt.linebreak = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.guicursor = ""
+vim.opt.showmode = false
+--vim.opt.cmdheight = 0
+vim.opt.laststatus = 0
 
 -- vim.opt.clipboard = "unnamedplus"
 -- vim.opt.scrolloff = 999

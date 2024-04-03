@@ -4,18 +4,21 @@ SAVEHIST=10000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/s4ch1n/.zshrc'
+#zstyle :compinstall filename '/home/s4ch1n/.zshrc'
 
-autoload -Uz compinit
-compinit
+#autoload -Uz compinit
+#compinit
 # End of lines added by compinstall
 
 # prompt 
 PS1='%F{cyan}%n%f %F{yellow}%~%f%(?.. %F{red}%?%f) %F{white}>>%f '; export PS1
 
+# alias
 alias vi="nvim"
-alias ls="ls --color"
-#alias cd="zoxide"
+alias ls="eza"
+alias tree="eza --tree"
+alias cat="bat"
+alias grep="rg"
 
 # set editor as nvim
 export EDITOR="vi"
@@ -40,6 +43,12 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+#source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+eval "$(fzf --zsh)"
+
+
