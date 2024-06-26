@@ -58,7 +58,6 @@ require("lazy").setup({
       lspconfig.pylsp.setup({autostart = false})
       lspconfig.tsserver.setup({autostart = false})
       lspconfig.hls.setup({autostart = false})
-      vim.api.nvim_set_keymap("i", "<Leader>c", ":LspStart<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "<Leader>c", ":LspStart<CR>", { noremap = true, silent = true })
     end
   },
@@ -67,6 +66,15 @@ require("lazy").setup({
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup();
+    end
+  },
+  {
+    "mattn/emmet-vim",
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup();
     end
   },
 })

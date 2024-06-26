@@ -1,6 +1,11 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile HISTSIZE=10000
 SAVEHIST=10000
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -11,7 +16,7 @@ bindkey -v
 # End of lines added by compinstall
 
 # prompt 
-PS1='%F{cyan}%n%f %F{yellow}%~%f%(?.. %F{red}%?%f) %F{white}>>%f '; export PS1
+PS1='%F{cyan}%n%f %F{yellow}%~%f%(?.. %F{red}%?%f) %F{white}λ%f '; export PS1
 
 # alias
 alias vi="nvim"
@@ -19,6 +24,8 @@ alias ls="eza"
 alias tree="eza --tree"
 alias cat="bat"
 alias grep="rg"
+alias clang++="clang++ --std=c++17"
+alias rm="rm -i"
 
 # set editor as nvim
 export EDITOR="vi"
@@ -51,4 +58,13 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 eval "$(fzf --zsh)"
 
+eval "$(direnv hook zsh)"
 
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+
+# bun completions
+[ -s "/Users/s4ch1n/.bun/_bun" ] && source "/Users/s4ch1n/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
