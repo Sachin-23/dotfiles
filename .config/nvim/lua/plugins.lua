@@ -15,30 +15,32 @@ require("lazy").setup({
   {
     "RRethy/base16-nvim",
     config = function()
-      vim.cmd.colorscheme("base16-tomorrow-night")
+      vim.cmd.colorscheme("base16-gruvbox-dark-hard")
+      vim.api.nvim_set_hl(0, "Normal", {bg="#1b1b1b"})
+      vim.api.nvim_set_hl(0, "LineNr", {bg="#1b1b1b"})
     end,
  },
-  --{
-  --  'nvim-lualine/lualine.nvim',
-  --  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  --  config = function()
-  --    require('lualine').setup({
-  --      options = {
-  --        theme = "base16",
-  --        section_separators = '', 
-  --        component_separators = ''
-  --      }
-  --    })
-  --  end
-  --},
-  {
-    "mbbill/undotree",
-    config = function()
-      vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
+ --{
+ --  'nvim-lualine/lualine.nvim',
+ --  dependencies = { 'nvim-tree/nvim-web-devicons' },
+ --  config = function()
+ --    require('lualine').setup({
+ --      options = {
+ --        theme = "base16",
+ --        section_separators = '', 
+ --        component_separators = ''
+ --      }
+ --    })
+ --  end
+ --},
+ {
+   "mbbill/undotree",
+   config = function()
+     vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+   end,
+ },
+ {
+   "nvim-treesitter/nvim-treesitter",
     config = function()
       require'nvim-treesitter.configs'.setup {
         ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "cpp" },
@@ -76,5 +78,14 @@ require("lazy").setup({
     config = function()
       require("colorizer").setup();
     end
+  },
+  { 
+    "junegunn/fzf", build = "./install --bin" 
+  },
+  { 
+    "junegunn/fzf.vim"
+  },
+  {
+    "tpope/vim-fugitive",
   },
 })
