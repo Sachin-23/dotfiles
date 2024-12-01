@@ -9,6 +9,8 @@ vim.opt.expandtab = true
 vim.opt.ruler = true
 vim.opt.wrap = true
 
+vim.opt.smartcase = true
+
 vim.opt.virtualedit = "block"
 
 -- Search and replace
@@ -23,10 +25,16 @@ vim.opt.showmode = false
 --vim.opt.cmdheight = 0
 vim.opt.laststatus = 0
 
+vim.opt.scrolloff = 1
+
 -- vim.opt.clipboard = "unnamedplus"
 -- vim.opt.scrolloff = 999
 
 vim.opt.termguicolors = true
+
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("x", "<leader>p", "\"_dP")
 
 USER = os.getenv("USER")
 
@@ -65,3 +73,24 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- use space as a the leader key
 -- vim.g.mapleader = ' '
+
+vim.o.updatetime = 1000;
+
+-- Create an autocmd group for LSP document highlight
+vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+
+vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
+  group = "LspDocumentHighlight",
+  buffer = 0,
+	callback = function()
+		vim.lsp.buf.document_highlight()
+	end,
+})
+
+vim.api.nvim_create_autocmd("CursorMoved", {
+  group = "LspDocumentHighlight",
+  buffer = 0,
+	callback = function()
+		vim.lsp.buf.clear_references()
+	end,
+})

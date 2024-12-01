@@ -12,27 +12,32 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  { 
+    "miikanissi/modus-themes.nvim"
+  },
   {
     "RRethy/base16-nvim",
     config = function()
-      vim.cmd.colorscheme("base16-gruvbox-dark-hard")
-      vim.api.nvim_set_hl(0, "Normal", {bg="#1b1b1b"})
-      vim.api.nvim_set_hl(0, "LineNr", {bg="#1b1b1b"})
+      vim.cmd.colorscheme("base16-solarized-dark")
+      -- vim.api.nvim_set_hl(0, "Normal", {bg="#1b1b1b"})
+      -- vim.api.nvim_set_hl(0, "LineNr", {bg="#1b1b1b"})
+      -- vim.api.nvim_set_hl(0, "Normal", {bg="#000000"})
+      -- vim.api.nvim_set_hl(0, "LineNr", {bg="#000000"})
     end,
  },
- --{
- --  'nvim-lualine/lualine.nvim',
- --  dependencies = { 'nvim-tree/nvim-web-devicons' },
- --  config = function()
- --    require('lualine').setup({
- --      options = {
- --        theme = "base16",
- --        section_separators = '', 
- --        component_separators = ''
- --      }
- --    })
- --  end
- --},
+ -- {
+ --   'nvim-lualine/lualine.nvim',
+ --   dependencies = { 'nvim-tree/nvim-web-devicons' },
+ --   config = function()
+ --     require('lualine').setup({
+ --       options = {
+ --         theme = "auto",
+ --         section_separators = '', 
+ --         component_separators = ''
+ --       }
+ --     })
+ --   end
+ -- },
  {
    "mbbill/undotree",
    config = function()
@@ -56,10 +61,10 @@ require("lazy").setup({
     config = function()
       local lspconfig = require("lspconfig")
       -- Don't start unless needed.
-      lspconfig.clangd.setup({autostart = false})
-      lspconfig.pylsp.setup({autostart = false})
-      lspconfig.tsserver.setup({autostart = false})
-      lspconfig.hls.setup({autostart = false})
+      lspconfig.clangd.setup({autostart = true})
+      lspconfig.pylsp.setup({autostart = true})
+      lspconfig.tsserver.setup({autostart = true})
+      lspconfig.hls.setup({autostart = true})
       vim.api.nvim_set_keymap("n", "<Leader>c", ":LspStart<CR>", { noremap = true, silent = true })
     end
   },
@@ -80,12 +85,36 @@ require("lazy").setup({
     end
   },
   { 
-    "junegunn/fzf", build = "./install --bin" 
+    "junegunn/fzf", 
+    build = "./install --bin" ,
   },
   { 
-    "junegunn/fzf.vim"
+    "junegunn/fzf.vim",
   },
   {
     "tpope/vim-fugitive",
   },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    config = function()
+      require("rainbow-delimiters.setup").setup({
+         highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterCyan',
+          'RainbowDelimiterViolet',
+        }
+      });
+    end
+  },
+  {
+    "barrett-ruth/live-server.nvim",
+    build = "pnpm add -g live-server" ,
+    cmd = { 'LiveServerStart', 'LiveServerStop' },
+    config = true,
+  }
 })
+

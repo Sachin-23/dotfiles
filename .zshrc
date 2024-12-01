@@ -5,6 +5,7 @@ setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
 
 #
 bindkey -v
@@ -91,38 +92,39 @@ export PATH="$HOME/.local/bin:$PATH"
 # ensure_tmux_is_running
 
 # git info
-autoload -Uz vcs_info
-#zstyle ':vcs_info:*' enable git 
+# autoload -Uz vcs_info
+# #zstyle ':vcs_info:*' enable git 
+#
+# # setup a hook that runs before every prompt. 
+# #precmd_vcs_info() { vcs_info }
+# #precmd_functions+=( precmd_vcs_info )
+# precmd() { vcs_info }
+# setopt prompt_subst
+#
+# zstyle ':vcs_info:*' enable git
+# zstyle ':vcs_info:git*:*' get-revision true
+# zstyle ':vcs_info:*' check-for-changes true
+# zstyle ':vcs_info:*' stagedstr "+"
+#
+# zstyle ':vcs_info:git:*' formats '%F{red}%c%f(%b|%.10i)'
+# zstyle ':vcs_info:git:*' actionformats '%F{red}%c%f(%b|%.10i)'
+#
+# # add a function to check for untracked files in the directory.
+# # from https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
+# #zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+# #zstyle ':vcs_info:git:*' formats "%c%u%b"
+#
+# zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+# +vi-git-untracked(){
+#     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+#         git status --porcelain | grep -q '^?? ' 2> /dev/null ; then
+#         # This will show the marker if there are any untracked files in repo.
+#         # If instead you want to show the marker only if there are untracked
+#         # files in $PWD, use:
+#         #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
+#         hook_com[staged]='*'
+#     fi
+# }
+#
+# RPROMPT='${vcs_info_msg_0_}'
 
-# setup a hook that runs before every prompt. 
-#precmd_vcs_info() { vcs_info }
-#precmd_functions+=( precmd_vcs_info )
-precmd() { vcs_info }
-setopt prompt_subst
-
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*:*' get-revision true
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr "+"
-
-zstyle ':vcs_info:git:*' formats '%F{red}%c%f(%b|%.10i)'
-zstyle ':vcs_info:git:*' actionformats '%F{red}%c%f(%b|%.10i)'
-
-# add a function to check for untracked files in the directory.
-# from https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
-#zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-#zstyle ':vcs_info:git:*' formats "%c%u%b"
-
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-+vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep -q '^?? ' 2> /dev/null ; then
-        # This will show the marker if there are any untracked files in repo.
-        # If instead you want to show the marker only if there are untracked
-        # files in $PWD, use:
-        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-        hook_com[staged]='*'
-    fi
-}
-
-RPROMPT='${vcs_info_msg_0_}'
