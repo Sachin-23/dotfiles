@@ -38,9 +38,9 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 
 USER = os.getenv("USER")
 
-SWAPDIR = "/Users/" .. USER .. "/.cache/nvim/.config/nvim/swap//"
-BACKUPDIR = "/Users/" .. USER .. "/.cache/nvim/.config/nvim/swap//"
-UNDODIR = "/Users/" .. USER .. "/.cache/nvim/.config/nvim/swap//"
+SWAPDIR = "/home/" .. USER .. "/.cache/nvim/.config/nvim/swap//"
+BACKUPDIR = "/home/" .. USER .. "/.cache/nvim/.config/nvim/swap//"
+UNDODIR = "/home/" .. USER .. "/.cache/nvim/.config/nvim/swap//"
 
 if vim.fn.isdirectory(SWAPDIR) == 0 then
 	vim.fn.mkdir(SWAPDIR, "p", "0o700")
