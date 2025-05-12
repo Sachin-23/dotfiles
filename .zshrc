@@ -45,6 +45,8 @@ alias cp="cp -i"
 eval "$(zoxide init zsh)"
 alias cd="z"
 
+alias g++="g++ --std=c++11"
+
 # set editor as vi
 export EDITOR="vi"
 
@@ -127,4 +129,30 @@ export PATH="$HOME/.local/bin:$PATH"
 # }
 #
 # RPROMPT='${vcs_info_msg_0_}'
+
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+
+
+#export LDFLAGS="-L/opt/homebrew/opt/node@22/lib"
+#export CPPFLAGS="-I/opt/homebrew/opt/node@22/include"
+
+[ -f "/Users/s4ch1n/.ghcup/env" ] && . "/Users/s4ch1n/.ghcup/env" # ghcup-env
+
+export PATH="$(brew --prefix bison)/bin:$PATH"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+#         . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
 
