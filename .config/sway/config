@@ -37,6 +37,7 @@ output * bg /home/s4ch1n/Pictures/Wallpapers/abstract.png fill
 set $swaylock 'swaylock \
 		--screenshots \
 		--clock \
+    --datestr "%d %b, %Y"\
 		--indicator \
 		--indicator-radius 100 \
 		--indicator-thickness 7 \
@@ -54,6 +55,8 @@ exec swayidle -w \
 	timeout 300  $swaylock \
 	timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 	before-sleep $swaylock
+
+bindsym XF86Favorites exec $swaylock
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -80,6 +83,7 @@ input "1739:0:Synaptics_TM3276-022" {
 	natural_scroll enabled
 	middle_emulation enabled
 }
+
 
 input "type:keyboard" {
 	xkb_options "caps:escape"
@@ -186,6 +190,7 @@ input "type:keyboard" {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+    bindsym $mod+d focus child
 #
 # Scratchpad:
 #
@@ -222,28 +227,33 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+
+
 #
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -2%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +2%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via xbacklight
-    bindsym --locked XF86MonBrightnessDown exec xbacklight -dec 5
-    bindsym --locked XF86MonBrightnessUp exec xbacklight -inc 5
+    bindsym --locked XF86MonBrightnessDown exec xbacklight -dec 2
+    bindsym --locked XF86MonBrightnessUp exec xbacklight -inc 2
     # Special key to take a screenshot with grim
-    set $ps1 Print
-    set $ps2 Control+Print
-    set $ps3 Alt+Print
-    set $ps4 Alt+Control+Print
-    set $psf $(/home/s4ch1n/Pictures/Screenshots)/ps_$(date +"%Y%m%d%H%M%S").png
 
-    bindsym $ps1 exec grim - | xclip
-    bindsym $ps2 exec grim -g "$(slurp)" - | xclip
-    bindsym $ps3 exec grim $psf
-    bindsym $ps4 exec grim -g "$(slurp)" $psf
+    set $ps1 Print
+    set $ps2 XF86SelectiveScreenshot
+    set $ps3 Shift+Print
+    set $ps4 Shift+XF86SelectiveScreenshot
+    set $psf /home/s4ch1n/Pictures/Screenshots/$(date +"%Y%m%d%H%M%S").png
+
+    bindsym $ps1 exec grim $psf
+    bindsym $ps2 exec grim -g "$(slurp)" $psf
+    bindsym $ps3 exec grim - | wl-copy
+    bindsym $ps4 exec grim -g "$(slurp)" - | wl-copy
+
 
 #
 # Status Bar:
@@ -276,6 +286,7 @@ include /etc/sway/config.d/*
 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
+    nm-applet
     gsettings set $gnome-schema gtk-theme 'Yaru-Deepblue-dark'
     gsettings set $gnome-schema font-name 'Iosevka 13'
 }
@@ -283,3 +294,11 @@ exec_always {
 for_window [app_id="thunar"] floating enable
 for_window [app_id="com.hex-rays.ida"] floating enable
 for_window [class="install4j-burp-StartBurp"] floating enable
+for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable
+for_window [app_id="gtkwave"] floating enable
+for_window [app_id="python3"] floating enable
+for_window [class="sioyek" title="^sioyek$"] floating enable, resize set 960 540
+for_window [class="pavucontrol"] floating enable
+
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:left workspace next

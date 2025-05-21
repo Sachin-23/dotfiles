@@ -1,24 +1,36 @@
 {
   "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": [
-      "tray",
-    "idle_inhibitor",
-    "cpu",
-    "memory",
-    "temperature",
-    "pulseaudio",
-    "backlight",
-    "battery", 
-    "battery#bat2", 
-    "network",
-    "clock"],
+    // "modules-center": ["sway/window"],
+    "modules-center": [],
+    "modules-right": ["privacy", "idle_inhibitor", "cpu", "memory", "temperature", "pulseaudio", "backlight", "battery", "battery#bat2", "clock", "tray"],
     "sway/window": {
       "max-length": 50
     },
     "sway/mode": {
       "format": "<span style=\"italic\">{}</span>"
+    },
+    "privacy": {
+      "icon-spacing": 4,
+      "icon-size": 18,
+      "transition-duration": 250,
+      "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
+      ]
     },
     "tray": {
       // "icon-size": 21,

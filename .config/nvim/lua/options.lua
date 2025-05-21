@@ -25,6 +25,8 @@ vim.opt.showmode = false
 --vim.opt.cmdheight = 0
 vim.opt.laststatus = 0
 
+-- vim.opt.clipboard = "unnamed"
+
 vim.opt.scrolloff = 1
 
 -- vim.opt.clipboard = "unnamedplus"
@@ -94,3 +96,4 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 		vim.lsp.buf.clear_references()
 	end,
 })
+

@@ -18,13 +18,13 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 compinit
 
-# zsh-completions & autosuggestions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-  #source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  autoload -Uz compinit
-  compinit
-fi
+# # zsh-completions & autosuggestions
+# if type brew &>/dev/null; then
+#   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+#   #source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#   autoload -Uz compinit
+#   compinit
+# fi
 
 # prompt 
 PROMPT='%F{cyan}%n%f %F{yellow}%~%f%(?.. %F{red}%?%f) %F{white}λ%f ';
@@ -128,3 +128,10 @@ export PATH="$HOME/.local/bin:$PATH"
 #
 # RPROMPT='${vcs_info_msg_0_}'
 
+PATH="/home/s4ch1n/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/s4ch1n/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/s4ch1n/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/s4ch1n/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/s4ch1n/perl5"; export PERL_MM_OPT;
+
+# fastfetch

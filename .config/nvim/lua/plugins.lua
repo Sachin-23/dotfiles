@@ -18,7 +18,7 @@ require("lazy").setup({
   {
     "RRethy/base16-nvim",
     config = function()
-      vim.cmd.colorscheme("base16-gruvbox-dark-hard")
+      vim.cmd.colorscheme("base16-solarized-dark")
       -- vim.api.nvim_set_hl(0, "Normal", {bg="#1b1b1b"})
       -- vim.api.nvim_set_hl(0, "LineNr", {bg="#1b1b1b"})
       -- vim.api.nvim_set_hl(0, "Normal", {bg="#000000"})
