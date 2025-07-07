@@ -75,4 +75,21 @@ export PATH="$HOME/.local/bin:$PATH"
 # === Motivate ===
 /opt/motivate/motivate.py
 
+# === Git ===
+autoload -Uz vcs_info
 
+# Show changes with a '*' before the prompt
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' get-revision true
+zstyle ':vcs_info:git:*' check-for-untracked-files true
+
+zstyle ':vcs_info:git:*' stagedstr '*'
+zstyle ':vcs_info:git:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' formats '%u%c(%b|%.10i)'
+zstyle ':vcs_info:git:*' actionformats '%u%c(%b|%.10i)'
+
+precmd_vcs_info() { vcs_info }
+precmd_functions+=precmd_vcs_info
+
+setopt prompt_subst
+RPROMPT='${vcs_info_msg_0_}'
