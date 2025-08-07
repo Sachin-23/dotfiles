@@ -87,6 +87,9 @@ input "1739:0:Synaptics_TM3276-022" {
 
 input "type:keyboard" {
 	xkb_options "caps:escape"
+}
+
+input "9610:73:BY_Tech_Gaming_Keyboard" {
   xkb_layout "60-percent-escape-tilde-grave"
 }
 
