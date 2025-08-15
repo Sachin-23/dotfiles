@@ -117,11 +117,20 @@ require("lazy").setup({
     init = function()
       -- VimTeX configuration goes here, e.g.
       vim.g.vimtex_view_method = "skim";
+      -- Execute this command to open and jump to the file (Not yet implemented by neovim) use nvr
+      -- $ nvim --server /tmp/nvim-synctex.sock --remote-send "<C-[>%file<CR>:%line<CR>"
       vim.g.vimtex_compiler_latexmk = {
         options = {
           '-shell-escape',
+          '-synctex=1',
         }
       }
+      vim.keymap.set("n", "<leader>lv", function()
+        local texfile = vim.fn.expand("%:p")
+        local pdffile = texfile:gsub("%.tex$", ".pdf")
+        local line = vim.fn.line(".")
+        vim.fn.jobstart({ "/Applications/Skim.app/Contents/SharedSupport/displayline", "-g", tostring(line), pdffile, texfile })
+      end)
     end
   },
 })

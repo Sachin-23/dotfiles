@@ -43,6 +43,7 @@ fi
 PROMPT='%F{cyan}%n%f %F{yellow}%~%f%(?.. %F{red}%?%f) %F{white}λ%f '
 
 # === Aliases ===
+alias svi='nvim --listen /tmp/nvim-synctex.sock'
 alias vi='nvim'
 alias ls='eza'
 alias tree='eza --tree'
@@ -71,6 +72,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # === Add local binary ===
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:/Applications/Racket v8.17/bin"
 
 # === Motivate ===
 /opt/motivate/motivate.py
@@ -93,3 +95,11 @@ precmd_functions+=precmd_vcs_info
 
 setopt prompt_subst
 RPROMPT='${vcs_info_msg_0_}'
+
+
+
+PATH="/Users/s4ch1n/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/s4ch1n/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/s4ch1n/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/s4ch1n/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/s4ch1n/perl5"; export PERL_MM_OPT;
